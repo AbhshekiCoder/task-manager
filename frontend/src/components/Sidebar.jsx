@@ -39,7 +39,7 @@ setTimeout(() =>{
     const day = String(today.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
     
-    let data = task.filter(Element => Element.date == formattedDate);
+    let data =task?task.filter(Element => Element.date == formattedDate):'';
     setCount(data.length)
     console.log(data)
     const allCompleted = data.length > 0 && data.every(Element => Element.status == "done");
