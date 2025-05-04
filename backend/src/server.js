@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv'
 import mongodbConnect from './config/ConnectDB.js';
 import authRoutes from './routes/authRoutes.js'
-import bodyParser from 'body-parser';
+
 import cors from 'cors'
 import userinfoRoutes from './routes/userinfoRoutes.js';
 import createTask from './routes/task.js';
@@ -16,7 +16,8 @@ const app = express()
 dotenv.config()
 
 app.use(cors())
-app.use(bodyParser.json());
+
+app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 app.use('/api/auth',  authRoutes)
 app.use('/api/user', userinfoRoutes)
