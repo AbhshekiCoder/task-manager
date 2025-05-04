@@ -1,2 +1,2 @@
-let url = "http://localhost:3000/"
+let url = "https://task-manager-be5r.onrender.com/"
 export default url;
