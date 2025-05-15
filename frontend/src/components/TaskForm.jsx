@@ -93,31 +93,6 @@ export default function TaskForm() {
     // Step 1: Request permission from the user
 
 // Step 2: Show notification (if permission is granted)
-let showNotification = (title) => {
-  if (Notification.permission !== "granted") {
-    Notification.requestPermission();
-  }
-  
-  if (Notification.permission === "granted") {
-    const today = new Date();
-
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-    
-    let data = task.filter(Element => Element.date == formattedDate && Element.status == "pending");
-    console.log(data)
-    data.map(Element =>(
-      new Notification(title, {
-        body: `you have tp complete your today task:${Element.name}`,
-        icon: "https://example.com/icon.png" // Optional
-      })
-
-    ))
-   
-  }
-}
 
   return (
    <>
@@ -130,7 +105,7 @@ let showNotification = (title) => {
         
                   <div className="flex justify-between items-center">
                     <div className="flex gap-4 text-xl text-gray-600" style={{ color:mode == "dark"?"white":"gray"}}>
-                      <FiBell className='hover:cursor-pointer' onClick={showNotification("today task pending")}/>
+                      <FiBell className='hover:cursor-pointer' />
                       <FiRefreshCw className='hover:cursor-pointer' onClick = {repeat}/>
                       <FiCalendar className='hover:cursor-pointer' onClick={() =>{document.querySelector('.calendar').style.display = "block"}}/>
 
