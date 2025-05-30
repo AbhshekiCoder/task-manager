@@ -36,7 +36,7 @@ const formattedDate = `${year}-${month}-${day}`;
 
 let data = tasks.filter(Element => Element.date == formattedDate);
 dispatch(taskinfo(data))
-navigate('/tasks')
+
         
 
           
@@ -58,10 +58,11 @@ navigate('/tasks')
     const day = String(today.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
     
-    let data =tasks?tasks.filter(Element => Element.date == formattedDate):'';
+    let data =tasks?tasks.filter(Element => Element.date == formattedDate &&  Element.status != "done"):'';
+    let data1 = tasks.filter(Element => Element.date == formattedDate)
     setCount(data.length)
     
-    setIsTodayTasks(data);
+    setIsTodayTasks(data1);
     }
   }
   useEffect(()=>{
